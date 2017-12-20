@@ -43,7 +43,7 @@ print (""" 我是一个程序员
 print ("我是一个程序员，\
         我刚开始学python")
 ```
-> 加上括号，() {}  []中不需要特别加换行符：
+> () {}  []中不需要特别加换行符：
 ```python
 test2 = ('csdn '
 'cssdn')
@@ -116,11 +116,11 @@ Python代码的整体注释是以多行注释组成的，为区别于单行注�
 ```python
 """
 Script Name	 : 
-Author		  : 
+Author		 : 
 Created		 : 
-Last Modified   : 
+Last Modified    : 
 Version		 : 
-Modifications   :
+Modifications    :
 Description	 : 
 """ 
 ```
