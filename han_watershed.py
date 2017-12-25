@@ -24,5 +24,5 @@ img = img[:, :, 0]
 
 feature_image = sitk.GradientMagnitude(img)
 watershed_img = sitk.MorphologicalWatershed(feature_image,  markWatershedLine=True,
-                                     fullyConnected=False, level=100)
+                                            fullyConnected=False, level=100)
 my_show(img, feature_image, sitk.LabelToRGB(watershed_img))
