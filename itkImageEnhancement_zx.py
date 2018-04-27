@@ -6,23 +6,16 @@ Author		  : ZengXiao
 Created		  : 2018/4/20
 Version		  : 1.0
 Description	  :
-PURPOSE：
-    Enhance images with the function of SimpleITK
-
-INPUTS:
-    path: The path of the file which to be converted.
-        Type of data: str
-    my_method: The methods of Image Enhancement
-        Type of data: str
-
-method:
-    GSD: Gray scale Dilate
-    AHE: Adaptive Histogram Equalization
-    LS : Laplace Sharpening
-
-RETURNED VALUE:
-    The enhanced image
-
+  PURPOSE     ：Enhance images with the function of SimpleITK
+  INPUTS      :
+  - path      : The path of the file which to be converted. Type of data: str
+  - my_method : The methods of Image Enhancement. Type of data: str
+  - method    :
+    - GSD     : Gray scale Dilate
+    - AHE     : Adaptive Histogram Equalization
+    - LS      : Laplace Sharpening
+  OUTPUT      : The enhanced image
+  
 """
 import SimpleITK as sitk
 
