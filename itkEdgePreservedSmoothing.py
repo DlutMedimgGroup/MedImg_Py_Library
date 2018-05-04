@@ -1,45 +1,43 @@
 '''
-Script Name	  : itkEdgePreservedSmoothing
-Author         : Han
-Created		  : 2018/4/21
-Version		  : 1.0
-Description	  : This is a function that smooth image with edge preserved.And
-                 We provide following five types :
-                 sitk.Bilateral( )
-                 sitk.MinMaxCurvatureFlow( )
-                 sitk.CurvatureFlow( )
-                 sitk.CurvatureAnisotropicDiffusion( )
-                 sitk.GradientAnisotropicDiffusion( )
+
+Script Name   : itkEdgePreservedSmoothing
+Author        : Han
+Created       : 2018/5/3
+Version       : 1.1
+Description   :
+  PURPOSE     : This is a function that smooth image with edge preserved
+  INPUTS      :
+  - im_arr    : Im_arr is the array of the image
+                Type of data: ndarray
+  - type_str  : the type of edge-preserved smoothing that you want to process
+                Type of data: str
+                'B'= 'BilateralImageFilter'
+                'MC' = 'MinMaxCurvatureFlowImageFilter'
+                'CF' = 'CurvatureFlowImageFilter'
+                'CAD' = 'CurvatureAnisotropicDiffusionImageFilter'
+                'GAD' = 'GradientAnisotropicDiffusionImageFilter'
+
+   OUTPUTS    :
+   - im_new    : Image
+
 '''
 
 
 import SimpleITK as sitk
 
 
-def itkEdgePreservedSmoothing(Im_arr, type_str): 
-    '''
-       input: Im_arr is the array of the image 
-              type_str is the way you want to process      
-       return: im_new which is an image as the result of smoothing.
-       all functions used in this function are from SimpleITK
-       here are the five functions got from SimpleITK to smooth image with edge
-       preserved:
-           sitk.Bilateral( )
-           sitk.MinMaxCurvatureFlow( )
-           sitk.CurvatureFlow( )
-           sitk.CurvatureAnisotropicDiffusion( )
-           sitk.GradientAnisotropicDiffusion( )
-    '''
-    # define the five ways
-    func_1 = 'BilateralImageFilter'
-    func_2 = 'MinMaxCurvatureFlowImageFilter'
-    func_3 = 'CurvatureFlowImageFilter'
-    func_4 = 'CurvatureAnisotropicDiffusionImageFilter'
-    func_5 = 'GradientAnisotropicDiffusionImageFilter'
+def itkEdgePreservedSmoothing(im_arr, type_str):
 
+    func_1 = 'B'
+    func_2 = 'MC'
+    func_3 = 'CF'
+    func_4 = 'CAD'
+    func_5 = 'GAD'
 
-    #get an image from the array input
-    image = sitk.GetImageFromArray(Im_arr)
+    # get an image from the array input
+
+    image = sitk.GetImageFromArray(im_arr)
+    image = sitk.Cast(image, sitk.sitkFloat32)
 
     # find out the way to process the image according to type_str
     # smooth the image
@@ -54,15 +52,15 @@ def itkEdgePreservedSmoothing(Im_arr, type_str):
     elif type_str == func_3:
 
         im_new = sitk.CurvatureFlow(image)
-    
+
     elif type_str == func_4:
-        
+
         im_new = sitk.CurvatureAnisotropicDiffusion(image)
 
     elif type_str == func_5:
-        
+
         im_new = sitk.GradientAnisotropicDiffusion(image)
-    
+
     else:
         print('Please check your spelling,'
               'and try again.')
@@ -70,9 +68,14 @@ def itkEdgePreservedSmoothing(Im_arr, type_str):
 
 
 # an example of using the function
-# smooth an image by the 'Discrete Gaussian' and save the output
-impath = '.\src_image\CT159.dcm'
-image = sitk.ReadImage(impath,sitk.sitkFloat32)
-image_arr = sitk.GetArrayFromImage(image)
-image_new=itkEdgePreservedSmoothing(image_arr ,'CurvatureFlowImageFilter')
-#sitk.WriteImage( image_new ,'.\src_image\out.dcm')
+if __name__ == '__main__':
+
+    impath = './src_image/CT159.dcm'
+    image = sitk.ReadImage(impath)
+    print(image.GetDimension(), image.GetPixelID(), image.GetPixelIDValue(), image.GetSize())
+    image_arr = sitk.GetArrayFromImage(image)
+    image_new = itkEdgePreservedSmoothing(image_arr, 'GAD')
+    print(image_new.GetDimension(), image_new.GetPixelID(), image_new.GetPixelIDValue(), image_new.GetSize())
+    image_test = sitk.Cast(image_new, sitk.sitkInt16)
+    print(image_test.GetDimension(), image_test.GetPixelID(), image_test.GetPixelIDValue(), image_test.GetSize())
+    sitk.WriteImage(image_test, './src_image/yi.dcm')
