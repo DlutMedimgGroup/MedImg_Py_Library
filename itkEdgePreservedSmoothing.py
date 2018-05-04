@@ -18,7 +18,7 @@ Description   :
                 'GAD' = 'GradientAnisotropicDiffusionImageFilter'
 
    OUTPUTS    :
-   - im_new    : Image
+   - im_new   : Image
 
 '''
 
