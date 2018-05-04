@@ -1,30 +1,23 @@
-'''
-Script Name	  : itkImageSmoothing
-Author		  : Boyce_Tian
-Created		  : 2018/4/19
-Version		  : 1.0
-Description	  : a function named itkImageSmoothing serves several ways to smooth the image.
-                input: Im_arr is the array of the image you want to smooth
-                       type_str is the name of which way you want to use to smooth image;
-                       and there are three ways we provide:
-                       'Discrete Gaussian','Binomial Blurring'and 'Recursive Gaussian'.
-'''
+"""
+ Script Name   : itkImageSmoothing
+ Author		   : Boyce_Tian
+ Created       : 2018/4/19
+ Version       : 2.0
+ Description   :
+   PURPOSE     : Serving several ways to smooth the image
+   INPUTS      :
+   - image_arr : The array of the image you want to smooth.
+   - type_str  :
+     - DGauss  : Smooth image by function sitk.DiscreteGaussian()
+     - Blur    : Smooth image by function sitk.BinomialBlur();
+     - RGauss  : Smooth image by function sitk.RecursiveGaussian();
+   OUTPUT      :
+   - im_new    : An image as the result of smoothing.
+"""
 
 import SimpleITK as sitk
 
 def itkImageSmoothing(Im_arr , type_str):
-
-    '''
-       input:param Im_arr & type_str
-             Im_arr is array
-             type_str is character string
-       return: im_new which is an image as the result of smoothing.
-       all functions used in this function are from SimpleITK
-       here are the three functions got from SimpleITK to smooth image:
-       sitk.DiscreteGaussian();
-       sitk.BinomialBlur();
-       sitk.RecursiveGaussian();
-    '''
 
     # define the three ways
     func_1 = 'Discrete Gaussian'
