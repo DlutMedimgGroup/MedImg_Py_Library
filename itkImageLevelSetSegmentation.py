@@ -2,9 +2,9 @@
 Script Name	  : itkImageLevelSetSegmentation
 Author		  :
 Created		  : 2018/5/3
-Version		  : 1.0
+Version		  : 1.2
 Description   :
-  PURPOSE     : This is a function that smooth image with edge preserved
+  PURPOSE     : Processing image using level-set segmentation
   INPUTS      :
   - Im_arr    : Im_arr is the array of the image
                 Type of data: ndarray
@@ -18,14 +18,13 @@ Description   :
                 'LP'  ： 'LaplacianSegmentationLevelSet'
    OUTPUTS    :
    - im_new   : Image
-
-'''
 """
 
 import SimpleITK as sitk
+import itkRegionGrow
 
 
-def itkImageLevelSetSegmentation(Im_arr, type_str, index):
+def itkImageLevelSetSegmentation(Im_arr, type_str, seedlist=0):
 
     # define the six way
     func_1 = 'SD'
@@ -46,21 +45,24 @@ def itkImageLevelSetSegmentation(Im_arr, type_str, index):
         im_new = sitk.ShapeDetectionLevelSet(image,image_pre)
 
     elif type_str == func_2:
-        image = sitk.GradientMagnitudeRecursiveGaussian(image)
-        featureImage = sitk.BoundedReciprocal(image)
-        seg = sitk.Image(image.GetSize(),sitk.sitkUInt8)
-        seg.CopyInformation(image)
-        seg[index] = 1
-        distance = sitk.SignedMaurerDistanceMap(seg, insideIsPositive=True, useImageSpacing=True)
-        init_ls = sitk.BinaryThreshold(distance, -1000, 10)
-        init_ls = sitk.Cast(init_ls, featureImage.GetPixelID())*-1+0.5
-        im_new = sitk.GeodesicActiveContourLevelSet(init_ls, featureImage)
+        #image = sitk.GradientMagnitudeRecursiveGaussian(image)
+        #featureImage = sitk.BoundedReciprocal(image)
+        #seg = sitk.Image(image.GetSize(),sitk.sitkUInt8)
+        #seg.CopyInformation(image)
+        #seg[seedlist] = 1
+        #distance = sitk.SignedMaurerDistanceMap(seg, insideIsPositive=True, useImageSpacing=True)
+        #init_ls = sitk.BinaryThreshold(distance, -1000, 10)
+        #init_ls = sitk.Cast(init_ls, featureImage.GetPixelID())*-1+0.5
+        seg = itkRegionGrow.itkRegionGrow(Im_arr, 'CC', seedlist)
+        init_ls = sitk.SignedMaurerDistanceMap(seg, insideIsPositive=True, useImageSpacing=True)
+        im_new = sitk.GeodesicActiveContourLevelSet(init_ls, sitk.Cast(image, sitk.sitkFloat32))
 
     elif type_str == func_3:
-        seg = sitk.Image(image.GetSize(),sitk.sitkUInt8)
-        seg.CopyInformation(image)
-        seg[index] = 1
-        seg = sitk.BinaryDilate(seg, 10)
+        #seg = sitk.Image(image.GetSize(),sitk.sitkUInt8)
+        #seg.CopyInformation(image)
+        #seg[seedlist] = 1
+        #seg = sitk.BinaryDilate(seg, 10)
+        seg = itkRegionGrow.itkRegionGrow(Im_arr, 'CC', seedlist)
         stats = sitk.LabelStatisticsImageFilter()
         stats.Execute(image, seg)
         lower_threshold = stats.GetMean(1)-1.5*stats.GetSigma(1)
@@ -69,16 +71,17 @@ def itkImageLevelSetSegmentation(Im_arr, type_str, index):
         im_new = sitk.ThresholdSegmentationLevelSet(init_ls,sitk.Cast(image,sitk.sitkFloat32), lower_threshold, upper_threshold)
 
     elif type_str == func_4:
-        im_new = sitk.FastMarching(image, [[223, 440, 0], [223, 442, 0]])
+        im_new = sitk.FastMarching(image, seedlist)
 
     elif type_str == func_5:
-        im_new = sitk.FastMarchingBase(image, [[223, 440, 0], [223, 442, 0]])
+        im_new = sitk.FastMarchingBase(image, seedlist)
 
     elif type_str == func_6:
-        seg = sitk.Image(image.GetSize(), sitk.sitkUInt8)
-        seg.CopyInformation(image)
-        seg[index] = 1
-        seg = sitk.BinaryDilate(seg, 8)
+        #seg = sitk.Image(image.GetSize(), sitk.sitkUInt8)
+        #seg.CopyInformation(image)
+        #seg[index] = 1
+        #seg = sitk.BinaryDilate(seg, 8)
+        seg = itkRegionGrow.itkRegionGrow(Im_arr, 'CC', seedlist)
         init_ls = sitk.SignedMaurerDistanceMap(seg, insideIsPositive=True, useImageSpacing=True)
         im_new = sitk.LaplacianSegmentationLevelSet(init_ls, sitk.Cast(image, sitk.sitkFloat32))
 
@@ -92,11 +95,11 @@ def itkImageLevelSetSegmentation(Im_arr, type_str, index):
 
 # an example of using the function
 if __name__ == '__main__':
-    impath = './src_image/PATIENT_DICOM.nrrd'
+    impath = './src_image/Result.nrrd'
     im = sitk.ReadImage(impath)
-    index = (248, 223, 13)
+    seedlist = [[259, 158, 116]]
     image_arr = sitk.GetArrayFromImage(im)
-    image_new = itkImageLevelSetSegmentation(image_arr, 'TH', index)
+    image_new = itkImageLevelSetSegmentation(image_arr, 'LP', seedlist)
     print(image_new.GetSize(), image_new.GetDimension(), image_new.GetPixelID())
     sitk.Show(image_new)
     image_out = sitk.Cast(image_new,sitk.sitkInt16)

@@ -23,7 +23,7 @@ import SimpleITK as sitk
 def itkImageEnhancement(path, my_method):
     # Define function itkImageEnhancement
     img = sitk.ReadImage(path)                  # Call SimpleITK to read the image
-    result = [];
+    result = []
 
     # img = sitk.HistogramMatching(img1, img2)  # 直方图匹配 Histogram Matching
     # 函数参数不一样，使用*args 出现error 尚未解决

@@ -1,5 +1,4 @@
-'''
-
+"""
 Script Name   : itkEdgePreservedSmoothing
 Author        : Han
 Created       : 2018/5/3
@@ -19,8 +18,7 @@ Description   :
 
    OUTPUTS    :
    - im_new   : Image
-
-'''
+"""
 
 
 import SimpleITK as sitk

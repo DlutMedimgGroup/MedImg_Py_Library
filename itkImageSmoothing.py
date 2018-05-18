@@ -50,8 +50,9 @@ def itkImageSmoothing(Im_arr , type_str):
 
 # an example of using the function
 # smooth an image by the 'Discrete Gaussian' and save the output
-impath = 'E:\python\CT159.dcm'
-im= sitk.ReadImage(impath)
-image_arr = sitk.GetArrayFromImage(im)
-image_new=itkImageSmoothing(image_arr ,'Discrete Gaussian')
-sitk.WriteImage(image_new,'E:\python\w11.dcm')
+if __name__ == '__main__':
+    impath = './src_image/CT159.dcm'
+    im= sitk.ReadImage(impath)
+    image_arr = sitk.GetArrayFromImage(im)
+    image_new=itkImageSmoothing(image_arr ,'Discrete Gaussian')
+    sitk.WriteImage(image_new,'./src_image/haha.dcm')

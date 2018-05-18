@@ -1,3 +1,4 @@
 .idea/
 .swp
 src_image/
+__pycache__/
