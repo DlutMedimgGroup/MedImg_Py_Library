@@ -33,7 +33,8 @@ PyMesh also has a number of optional dependencies:
 - Triangle: A two-Dimensional quality mesh generator and Delaunay triangulator.
 - All of the optional libraries are included in $PYMESH_PATH/third_party directory.
 
-[PyMesh on GitHub] (Website: https://github.com/qnzhou/PyMesh)
-[PyMesh User Guide] (http://pymesh.readthedocs.io/en/latest/user_guide.html)
+PyMesh on GitHub: Website: https://github.com/qnzhou/PyMesh
+
+PyMesh User Guide: http://pymesh.readthedocs.io/en/latest/user_guide.html
 
 Recommend Python Library: Awesome Python https://awesome-python.com/#recommender-systems
