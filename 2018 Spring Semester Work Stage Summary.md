@@ -38,3 +38,37 @@ PyMesh on GitHub: Website: https://github.com/qnzhou/PyMesh
 PyMesh User Guide: http://pymesh.readthedocs.io/en/latest/user_guide.html
 
 Recommend Python Library: Awesome Python https://awesome-python.com/#recommender-systems
+
+## VTK
+
+网上的资料有点旧了，试了下可以直接用下面的命令安装vtk-8.1.0,适用与Windows和Linux下
+
+> pip install vtk
+
+vtk 的帮助文档: https://www.vtk.org/doc/release/7.1/html/
+
+## TVTK and mayavi 
+
+介绍： http://docs.enthought.com/mayavi/tvtk/README.html#
+
+The tvtk module (also called TVTK) provides a traits enabled version of VTK. TVTK objects wrap around VTK objects but additionally support traits, and provide a convenient Pythonic API. TVTK is implemented mostly in pure Python (except for a small extension module). Here is a list of current features.
+
+1. All VTK classes are wrapped.
+2. Classes are generated at install time on the installed platform.
+3. Support for traits.
+4. Elementary pickle support.
+5. Pythonic feel.
+6. Handles numpy arrays/Python lists transparently.
+7. Support for a pipeline browser, ivtk and a high-level mlab like module.
+8. Envisage plugins for a tvtk scene and the pipeline browser.
+tvtk is free software with a BSD style license.
+
+安装：
+
+As of the latest release, i.e. 4.6.0 and above, if you are using Python 3.x and are on a 64 bit machine, installation via pip is the easiest and is as follows:
+
+> $ pip install mayavi
+
+> $ pip install PyQt5
+
+Thats it!
