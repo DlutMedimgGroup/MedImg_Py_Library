@@ -72,3 +72,20 @@ As of the latest release, i.e. 4.6.0 and above, if you are using Python 3.x and 
 > $ pip install PyQt5
 
 Thats it!
+
+##OpenGL
+
+To find out some information about OpenGL:
+Official website of OpenGL:https://www.opengl.org/
+To instal OpenGL:
+Download the installation package:https://pypi.org/project/PyOpenGL
+Instal it as its prompts
+
+Problems you may come across：
+The download package is for 32bit machine
+for more version:https://www.lfd.uci.edu/~gohlke/pythonlibs/
+find out the suitable one，do according to the above method.
+
+If your machine is a 32bit one,
+> $ pip install pyopengl 
+it's the easiest way to instal it.
