@@ -73,7 +73,7 @@ As of the latest release, i.e. 4.6.0 and above, if you are using Python 3.x and 
 
 Thats it!
 
-##OpenGL
+## OpenGL
 
 To find out some information about OpenGL:
 Official website of OpenGL:https://www.opengl.org/
