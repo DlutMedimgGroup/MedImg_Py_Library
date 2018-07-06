@@ -76,17 +76,25 @@ Thats it!
 ## OpenGL
 
 1.To find out some information about OpenGL:
+
 Official website of OpenGL:https://www.opengl.org/
 
 2.To instal OpenGL:
+
 Download the installation package:https://pypi.org/project/PyOpenGL
+
 Instal it as its prompts
 
 3.Problems you may come across:
+
 The download package is for 32bit machine
+
 For more version:https://www.lfd.uci.edu/~gohlke/pythonlibs/
+
 Find out the suitable one，do according to the above method.
 
 4.If your machine is a 32bit one:
+
 > $ pip install pyopengl 
+
 It's the easiest way to instal it.
