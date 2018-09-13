@@ -130,31 +130,31 @@ def itk2DImageRegistration(Im_arr1,Im_arr2,trans_type,metric_type,interpolator_t
 
     return transform
 
-  """
+"""
   When the.py file is run directly, the code block under if __name__ = '__main__' is run.
   When the.py file is imported as a module, the code block under if __name__ = '__main__' is not run.
-  """
-#  if __name__ == '__main__':
+"""
+if __name__ == '__main__':
 
 #input, preprocessing and registration
-path1 = './src_image/CT_Head_Patient1.mhd'
-fixed_im = sitk.ReadImage(path1)
-fixed_image_arr = sitk.GetArrayFromImage(fixed_im)
-path2 = './src_image/MR_Head_Patient1.mhd'
-moving_im = sitk.ReadImage(path2)
-moving_image_arr = sitk.GetArrayFromImage(moving_im)
-transform = itk2DImageRegistration( fixed_image_arr, moving_image_arr,'BS','Co', 'BSI','GD')
+    path1 = './src_image/CT_Head_Patient1.mhd'
+    fixed_im = sitk.ReadImage(path1)
+    fixed_image_arr = sitk.GetArrayFromImage(fixed_im)
+    path2 = './src_image/MR_Head_Patient1.mhd'
+    moving_im = sitk.ReadImage(path2)
+    moving_image_arr = sitk.GetArrayFromImage(moving_im)
+    transform = itk2DImageRegistration( fixed_image_arr, moving_image_arr,'BSpline','correlation','BSpline','Gradient')
 
-#resample and Rescale Intensity
-resampler = sitk.ResampleImageFilter()
-resampler.SetTransform(transform)
-resampler.SetReferenceImage(fixed_im)
-out = resampler.Execute(moving_im)
-img0 = sitk.Cast(sitk.RescaleIntensity(moving_im), sitk.sitkUInt8)
-img1 = sitk.Cast(sitk.RescaleIntensity(fixed_im), sitk.sitkUInt8)
-img2 = sitk.Cast(sitk.RescaleIntensity(out), sitk.sitkUInt8)
-img3 = sitk.Cast(sitk.RescaleIntensity(img1 / 2. + img2 / 2.), sitk.sitkUInt8)
+    #resample and Rescale Intensity
+    resampler = sitk.ResampleImageFilter()
+    resampler.SetTransform(transform)
+    resampler.SetReferenceImage(fixed_im)
+    out = resampler.Execute(moving_im)
+    img0 = sitk.Cast(sitk.RescaleIntensity(moving_im), sitk.sitkUInt8)
+    img1 = sitk.Cast(sitk.RescaleIntensity(fixed_im), sitk.sitkUInt8)
+    img2 = sitk.Cast(sitk.RescaleIntensity(out), sitk.sitkUInt8)
+    img3 = sitk.Cast(sitk.RescaleIntensity(img1 / 2. + img2 / 2.), sitk.sitkUInt8)
 
-# combine these three scalar images into a multicomponent image named img_out
-img_out = sitk.Compose(img1, img2, img3)
-sitk.WriteImage(img_out,'./src_image/re_Head_Patient1.mhd')
+    # combine these three scalar images into a multicomponent image named img_out
+    img_out = sitk.Compose(img1, img2, img3)
+    sitk.WriteImage(img_out,'./src_image/re_Head_Patient1.mhd')
