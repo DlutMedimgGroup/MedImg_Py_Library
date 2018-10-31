@@ -1,4 +1,5 @@
 #应用三个库中函数的简单程序
+#An example of using library functions
 #田志浩 20171108
 
 import matplotlib.pyplot as plt
