@@ -1,5 +1,5 @@
 """
-  File name: EdgeDetect_example
+  File name: EdgeDetect_demo
    Function：实现调用多个库的代码,使用边缘检测实现简单的线条画
     File No: 待定
  Created on: 2017-11-2
