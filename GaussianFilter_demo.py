@@ -1,5 +1,5 @@
 """
-Script Name   :zx_homework_1220
+Script Name   :GaussianFilter_demo
 Author        :zx
 Created on    :2017/12/20
 Last Modified :2017/12/20
