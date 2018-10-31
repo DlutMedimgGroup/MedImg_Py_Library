@@ -1,5 +1,5 @@
 """
-Script Name	  : han_gaussian.py
+Script Name	  : Gaussian_example.py
 Author		  : Han
 Created		  : 2017/12/12
 Version		  : 1.0
