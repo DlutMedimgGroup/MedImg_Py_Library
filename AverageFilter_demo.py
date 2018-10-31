@@ -1,5 +1,5 @@
 """
-  File name: zx_homework3
+  File name: AverageFilter_demo
    Function：实现模板滤波
  Created on: 2017-12-12
      Author: zx
