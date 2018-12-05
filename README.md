@@ -23,10 +23,25 @@ git clone https://github.com/DlutMedimgGroup/MedImg_Py_Library.git
 3. **PyMesh** v0.2.1 or higher
 4. **Numpy** v1.14.5 or higher
 5. **Matplotlib** v2.2.2 or higher
+6. **Pillow** v5.3.0 or higher
+7. **vtk** v8.1.1 or higher
 
 ## Usage example
 
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
+First create a small Python script called hello.py with the following content and save it somewhere:
+
+```py
+import Medimgpy
+impath = './src_image/CT159.dcm'   #the full path of your image
+im = sitk.ReadImage(impath)
+image_arr = sitk.GetArrayFromImage(im)
+image_new = Medimgpy.itkImageSmoothing(image_arr ,'Discrete Gaussian')
+sitk.WriteImage(image_new,'./src_image/haha.dcm')
+```
+
+Change the directory to where your hello.py script can be found.
+
+Run python3 hello.py
 
 ## Documents
 
