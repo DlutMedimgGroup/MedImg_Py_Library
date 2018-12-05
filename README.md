@@ -1,10 +1,13 @@
 # MedImg_Py_Library
-> A friendly Medical Image Processing Library using Python
+> A friendly starer guide and library for those who begins to learn medical image processing using Python.
+We have starter guide manual and code resources for the beginners. The manual has two language versions: English and Chinese.
+Created by the medical imaging group of Dalian univerisity of technology, China (http://biomedimg-dlut-edu.cn/)
+
+Since the library is designed to help users process medical images easilier rather than create new ways to process them, we've written with reference to some existing open source libraries and some examples online.
 
 ![](https://i.postimg.cc/0jwBLjQB/origin.jpg)
 ![](https://i.postimg.cc/mDqnXCb9/after.jpg)
 
-Since the library is designed to help users process medical images easilier rather than create new ways to process them, we've written with reference to some existing open source libraries and some examples online.
 
 ## Download Source
 
