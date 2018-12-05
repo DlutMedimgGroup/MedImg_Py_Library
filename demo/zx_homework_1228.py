@@ -42,7 +42,7 @@ outTx = sitk.DisplacementFieldTransform(displacementField)
 #sitk.WriteTransform(outTx,'C:users/zengxiao/Desktop/ImageProcess/lenaDemons.jpg')
 
 resampler = sitk.ResampleImageFilter()
-resampler.SetReferenceImage(fixed);
+resampler.SetReferenceImage(fixed)
 resampler.SetInterpolator(sitk.sitkLinear)
 resampler.SetDefaultPixelValue(100)
 resampler.SetTransform(outTx)
