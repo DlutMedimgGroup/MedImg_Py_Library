@@ -57,7 +57,7 @@ Run python3 hello.py
 
 # MedImg_Py_Library 中文README
 
-> 对于那些刚开始使用Python学习医学图像处理的人来说，MedImg_Py_Library是一个友好的指南和函数库库。
+> 对于那些刚开始使用Python学习医学图像处理的人来说，MedImg_Py_Library是一个友好的指南和函数库。
 
 我们为初学者提供入门指南手册和代码资源。 
 该手册有中英两种语言版本，由大连理工大学医学影像课题组创建，（http://biomedimg-dlut-edu.cn/）
