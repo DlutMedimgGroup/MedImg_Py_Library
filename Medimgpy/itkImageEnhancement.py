@@ -15,22 +15,25 @@ Description	  :
     - AHE     : Adaptive Histogram Equalization
     - LS      : Laplace Sharpening
   OUTPUT      : The enhanced image
-  
+
 """
 import SimpleITK as sitk
 
 
 def itkImageEnhancement(path, my_method):
     # Define function itkImageEnhancement
-    img = sitk.ReadImage(path)                  # Call SimpleITK to read the image
+    # Call SimpleITK to read the image
+    img = sitk.ReadImage(path)
     result = []
 
     # img = sitk.HistogramMatching(img1, img2)  # 直方图匹配 Histogram Matching
     # 函数参数不一样，使用*args 出现error 尚未解决
 
     if my_method == 'GSD':                      # chose the method of enhancement
-        result = sitk.GrayscaleDilate(img)      # save the file named result in the same path
-        print('Gray Scale Dilate')              # Tell the user function worked successfully
+        # save the file named result in the same path
+        result = sitk.GrayscaleDilate(img)
+        # Tell the user function worked successfully
+        print('Gray Scale Dilate')
     elif my_method == 'AHE':
         result = sitk.AdaptiveHistogramEqualization(img)
         print('Adaptive Histogram Equalization')

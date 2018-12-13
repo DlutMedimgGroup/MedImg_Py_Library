@@ -17,14 +17,15 @@
 
 import SimpleITK as sitk
 
-def itkImageSmoothing(Im_arr , type_str):
+
+def itkImageSmoothing(Im_arr, type_str):
 
     # define the three ways
     func_1 = 'Discrete Gaussian'
     func_2 = 'Binomial Blurring'
     func_3 = 'Recursive Gaussian'
 
-    #get an image from the array input
+    # get an image from the array input
     image = sitk.GetImageFromArray(Im_arr)
 
     # find out the way to process the image according to type_str
@@ -52,7 +53,7 @@ def itkImageSmoothing(Im_arr , type_str):
 # smooth an image by the 'Discrete Gaussian' and save the output
 if __name__ == '__main__':
     impath = './src_image/CT159.dcm'
-    im= sitk.ReadImage(impath)
+    im = sitk.ReadImage(impath)
     image_arr = sitk.GetArrayFromImage(im)
-    image_new=itkImageSmoothing(image_arr ,'Discrete Gaussian')
-    sitk.WriteImage(image_new,'./src_image/haha.dcm')
+    image_new = itkImageSmoothing(image_arr, 'Discrete Gaussian')
+    sitk.WriteImage(image_new, './src_image/haha.dcm')

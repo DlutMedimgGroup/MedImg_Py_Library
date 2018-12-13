@@ -70,10 +70,22 @@ if __name__ == '__main__':
 
     impath = './src_image/CT159.dcm'
     image = sitk.ReadImage(impath)
-    print(image.GetDimension(), image.GetPixelID(), image.GetPixelIDValue(), image.GetSize())
+    print(
+        image.GetDimension(),
+        image.GetPixelID(),
+        image.GetPixelIDValue(),
+        image.GetSize())
     image_arr = sitk.GetArrayFromImage(image)
     image_new = itkEdgePreservedSmoothing(image_arr, 'GAD')
-    print(image_new.GetDimension(), image_new.GetPixelID(), image_new.GetPixelIDValue(), image_new.GetSize())
+    print(
+        image_new.GetDimension(),
+        image_new.GetPixelID(),
+        image_new.GetPixelIDValue(),
+        image_new.GetSize())
     image_test = sitk.Cast(image_new, sitk.sitkInt16)
-    print(image_test.GetDimension(), image_test.GetPixelID(), image_test.GetPixelIDValue(), image_test.GetSize())
+    print(
+        image_test.GetDimension(),
+        image_test.GetPixelID(),
+        image_test.GetPixelIDValue(),
+        image_test.GetSize())
     sitk.WriteImage(image_test, './src_image/yi.dcm')

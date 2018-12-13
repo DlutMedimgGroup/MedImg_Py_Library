@@ -30,8 +30,9 @@ Description	  :
 import SimpleITK as sitk
 
 
-def itkVectorFuzzyConnectednessImageFilter(path, seedList, iterations=4, multiplier=4.5, radius=1, replaceValue=1):
+def itkVectorFuzzyConnectednessImageFilter(
+        path, seedList, iterations=4, multiplier=4.5, radius=1, replaceValue=1):
     img = sitk.GetArrayFromImage(sitk.ReadImage(path))
-    result = sitk.VectorConfidenceConnected(img, seedList, iterations, multiplier, radius, replaceValue)
+    result = sitk.VectorConfidenceConnected(
+        img, seedList, iterations, multiplier, radius, replaceValue)
     return result
-

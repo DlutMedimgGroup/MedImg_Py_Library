@@ -21,6 +21,7 @@ Description   :
 import SimpleITK as sitk
 import itkEdgePreservedSmoothing
 
+
 def itkRegionGrow(im_arr, type_str, seedlist, lower=0, upper=1):
 
     func_1 = 'CT'
@@ -37,7 +38,7 @@ def itkRegionGrow(im_arr, type_str, seedlist, lower=0, upper=1):
 
     elif type_str == func_2:
         im_new = sitk.ConfidenceConnected(image, seedlist)
-    
+
     else:
         print('Please check your spelling,'
               'and try again.')
@@ -49,11 +50,23 @@ if __name__ == '__main__':
 
     impath = './src_image/CT159.dcm'
     image = sitk.ReadImage(impath)
-    print(image.GetDimension(), image.GetPixelID(), image.GetPixelIDValue(), image.GetSize())
+    print(
+        image.GetDimension(),
+        image.GetPixelID(),
+        image.GetPixelIDValue(),
+        image.GetSize())
     image_arr = sitk.GetArrayFromImage(image)
-    image_new = itkRegionGrow(image_arr, 'CC',[[271, 262, 0]],-50,50)
-    print(image_new.GetDimension(), image_new.GetPixelID(), image_new.GetPixelIDValue(), image_new.GetSize())
+    image_new = itkRegionGrow(image_arr, 'CC', [[271, 262, 0]], -50, 50)
+    print(
+        image_new.GetDimension(),
+        image_new.GetPixelID(),
+        image_new.GetPixelIDValue(),
+        image_new.GetSize())
     image_test = sitk.Cast(image_new, sitk.sitkInt16)
-    print(image_test.GetDimension(), image_test.GetPixelID(), image_test.GetPixelIDValue(), image_test.GetSize())
+    print(
+        image_test.GetDimension(),
+        image_test.GetPixelID(),
+        image_test.GetPixelIDValue(),
+        image_test.GetSize())
     sitk.WriteImage(image_test, './src_image/yi.dcm')
     sitk.Show(image_test)

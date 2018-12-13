@@ -28,7 +28,8 @@ import SimpleITK as sitk
 
 def format_conv(path, my_format):
     # Define function format_conv
-    src = sitk.ReadImage(path)                  # Call SimpleITK to read the image
+    # Call SimpleITK to read the image
+    src = sitk.ReadImage(path)
     img_array = sitk.GetArrayFromImage(src)     # Convert image to array
     img = sitk.GetImageFromArray(img_array)     # Convert array to image
 
@@ -42,17 +43,19 @@ def format_conv(path, my_format):
     self_path = path[0:end]              # Get the path of file
 
     if my_format == 'nii':                                  # chose which format to save
-        sitk.WriteImage(img, self_path + 'result.nii')      # save the file named result in the same path
+        # save the file named result in the same path
+        sitk.WriteImage(img, self_path + 'result.nii')
         print('format_conv')                                # Tell the user function worked successfully
     elif my_format == 'nrrd':
         sitk.WriteImage(img, self_path + 'result.nrrd')
         print('format_conv')
     else:
-        print('Sorry, We do not support this format.')   # If there is an unexpected format, inform the error
+        # If there is an unexpected format, inform the error
+        print('Sorry, We do not support this format.')
 
 
 ''' Test function '''
-path = "D:\PythonCode\zx\src\PATIENT_DICOM.mhd"     # Input path parameters
+path = r"D:\PythonCode\zx\src\PATIENT_DICOM.mhd"     # Input path parameters
 my_format1 = "nii"              # Input format parameters
 format_conv(path, my_format1)   # Call function
 
