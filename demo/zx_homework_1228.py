@@ -11,13 +11,19 @@ Description   :Demons图像变形配准
 from __future__ import print_function
 import SimpleITK as sitk
 
+
 def command_iteration(filter):
     print("{0:3} = {1:10.5f}".format(filter.GetElapsedIterations(),
                                      filter.GetMetric()))
 
-fixed = sitk.ReadImage('C:users/zengxiao/Desktop/ImageProcess/lena1.jpg', sitk.sitkFloat32)
 
-moving = sitk.ReadImage('C:users/zengxiao/Desktop/ImageProcess/lena10.jpg', sitk.sitkFloat32)
+fixed = sitk.ReadImage(
+    'C:users/zengxiao/Desktop/ImageProcess/lena1.jpg',
+    sitk.sitkFloat32)
+
+moving = sitk.ReadImage(
+    'C:users/zengxiao/Desktop/ImageProcess/lena10.jpg',
+    sitk.sitkFloat32)
 
 matcher = sitk.HistogramMatchingImageFilter()
 matcher.SetNumberOfHistogramLevels(1024)
@@ -39,7 +45,7 @@ print(" RMS: {0}".format(demons.GetRMSChange()))
 
 outTx = sitk.DisplacementFieldTransform(displacementField)
 
-#sitk.WriteTransform(outTx,'C:users/zengxiao/Desktop/ImageProcess/lenaDemons.jpg')
+# sitk.WriteTransform(outTx,'C:users/zengxiao/Desktop/ImageProcess/lenaDemons.jpg')
 
 resampler = sitk.ResampleImageFilter()
 resampler.SetReferenceImage(fixed)

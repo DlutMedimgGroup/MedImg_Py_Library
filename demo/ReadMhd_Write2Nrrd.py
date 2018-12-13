@@ -12,11 +12,11 @@
 import SimpleITK as sitk
 
 
-def ReadMhd_Write2Nrrd( mhd_full_path_name,nrrd_full_path_name):
-   Image = sitk.ReadImage(mhd_full_path_name)
-   image_array = sitk.GetArrayFromImage(Image)
-   img = sitk.GetImageFromArray(image_array)
-   sitk.WriteImage(img, nrrd_full_path_name)
-   print ('The picture has been transferred.')
+def ReadMhd_Write2Nrrd(mhd_full_path_name, nrrd_full_path_name):
+    Image = sitk.ReadImage(mhd_full_path_name)
+    image_array = sitk.GetArrayFromImage(Image)
+    img = sitk.GetImageFromArray(image_array)
+    sitk.WriteImage(img, nrrd_full_path_name)
+    print('The picture has been transferred.')
 
 # ReadMhd_Write2Nrrd('E:\IMAGE-BME\yanghelin\PATIENT_DICOM.mhd','E:\IMAGE-BME\yanghelin\PATIENT_DICOM.nrrd')

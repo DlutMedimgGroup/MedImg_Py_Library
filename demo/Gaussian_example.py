@@ -13,6 +13,8 @@ from PIL import Image
 # param size       : the size of gaussian kernel
 # param sigma      : a param to get gassian kernel
 # return           : the image which has been processed
+
+
 def gaussian_filter(input_image, size, sigma):
     src = np.array(input_image)
     gaussian_kernel = _get_gaussiankernel(size, sigma)
@@ -49,6 +51,8 @@ def gaussian_filter(input_image, size, sigma):
         return output_image
 
 # To get the gassian kernel
+
+
 def _get_gaussiankernel(size, sigma):
     kernel = np.zeros((size, size))
     origin = size // 2

@@ -10,7 +10,8 @@ import matplotlib.pyplot as plt
 
 
 # param src        : the images that you want to plot
-# description      : this is a function which can show the output image using matplotlib
+# description      : this is a function which can show the output image
+# using matplotlib
 def my_show(*args):
     for count, src in enumerate(args):
         nda = sitk.GetArrayViewFromImage(src)
@@ -23,6 +24,9 @@ img = sitk.ReadImage('CT159.dcm', sitk.sitkFloat32)
 img = img[:, :, 0]
 
 feature_image = sitk.GradientMagnitude(img)
-watershed_img = sitk.MorphologicalWatershed(feature_image,  markWatershedLine=True,
-                                            fullyConnected=False, level=100)
+watershed_img = sitk.MorphologicalWatershed(
+    feature_image,
+    markWatershedLine=True,
+    fullyConnected=False,
+    level=100)
 my_show(img, feature_image, sitk.LabelToRGB(watershed_img))

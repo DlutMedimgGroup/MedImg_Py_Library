@@ -14,9 +14,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage import filters
 
-img=np.array(Image.open('yhl_pic.jpg'))  #打开图像并转化为数字矩阵
+img = np.array(Image.open('yhl_pic.jpg'))  # 打开图像并转化为数字矩阵
 
-gaussimg = filters.gaussian_filter(img,sigma=2)
+gaussimg = filters.gaussian_filter(img, sigma=2)
 
 plt.figure()
 plt.imshow(gaussimg)

@@ -11,8 +11,8 @@ Description	  : a function named ReadMhd_Write_2_nrry which aims to transform im
 
 import SimpleITK as sitk
 
-def ReadMhd_WriteNifty(impath,impath_new):
 
+def ReadMhd_WriteNifty(impath, impath_new):
     '''
     input:param impath & impsth_new
     return: imsave which aim to save the format changed image to a new designated path;
@@ -24,10 +24,10 @@ def ReadMhd_WriteNifty(impath,impath_new):
     '''
 
 # main part of the function
-    #src : target image
-    #img_array : the array form image
-    #img : the new created image what we want
-    #imresult : return value
+    # src : target image
+    # img_array : the array form image
+    # img : the new created image what we want
+    # imresult : return value
     src = sitk.ReadImage(impath)
     img_array = sitk.GetArrayFromImage(src)
     img = sitk.GetImageFromArray(img_array)
@@ -35,8 +35,10 @@ def ReadMhd_WriteNifty(impath,impath_new):
 
     return imresult
 
+
 # an example of using the function
 # read the new image in the format of nrry
 ReadMhd_WriteNifty('/Users/huilibo/PycharmProjects/test1/PATIENT_DICOM.mhd',
                    '/Users/huilibo/PycharmProjects/test1/Result_1.nrrd')
-imnew_read=sitk.ReadImage('/Users/huilibo/PycharmProjects/test1/Result_1.nrrd')
+imnew_read = sitk.ReadImage(
+    '/Users/huilibo/PycharmProjects/test1/Result_1.nrrd')
