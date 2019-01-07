@@ -91,6 +91,7 @@ git clone https://github.com/DlutMedimgGroup/MedImg_Py_Library.git
 
 ```py
 import Medimgpy
+import SimpleITK as sitk
 impath = './src_image/CT159.dcm'   #the full path of your image
 im = sitk.ReadImage(impath)
 image_arr = sitk.GetArrayFromImage(im)
