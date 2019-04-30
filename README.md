@@ -1,9 +1,9 @@
 # MedImg_Py_Library
 > A friendly starer guide and library for those who begins to learn medical image processing using Python.
 We have starter guide manual and code resources for the beginners. The manual has two language versions: English and Chinese.
-Created by the medical imaging group of Dalian univerisity of technology, China (http://biomedimg-dlut-edu.cn/)
+Created by the medical imaging group of Dalian university of technology, China (http://biomedimg-dlut-edu.cn/)
 
-Since the library is designed to help users process medical images easilier rather than create new ways to process them, we've written with reference to some existing open source libraries and some examples online.
+Since the library is designed to help users process medical images easily rather than create new ways to process them, we've written with reference to some existing open source libraries and some examples online.
 
 
 ## Download Source
@@ -28,7 +28,7 @@ git clone https://github.com/DlutMedimgGroup/MedImg_Py_Library.git
 
 ## Usage example
 
-First create a small Python script called hello.py with the following content and save it somewhere:
+First create a small Python script called `hello.py` with the following content and save it somewhere:
 
 ```py
 import Medimgpy
@@ -39,7 +39,7 @@ image_new = Medimgpy.itkImageSmoothing(image_arr ,'Discrete Gaussian')
 sitk.WriteImage(image_new,'./src_image/haha.dcm')
 ```
 
-Change the directory to where your hello.py script can be found.
+Change the directory to where your `hello.py script can be found.
 
 Run python3 hello.py
 
